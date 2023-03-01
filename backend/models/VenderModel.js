@@ -33,9 +33,8 @@ const VenderSchema = new Schema({
         type: String, 
         required: true
     },
-    fileName: {
-       data:Buffer,
-       contentType:String
+    images: {
+        type: [String]
     },
     foodPreferences:{
         type: String

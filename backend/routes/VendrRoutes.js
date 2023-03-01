@@ -1,52 +1,44 @@
-const express = require("express");
-const router = express.Router();
-const multer = require("multer")
+const express = require('express');
+const multer = require('multer');
+const cors = require('cors');
+
+const router = express();
 const VenderData = require("../models/VenderModel");
-// storage
-const Storage = multer.diskStorage({
-    destination:"uploads",
-    filename: (req, file, cb)=>{
-        cb(null, file.originalname)
-    }
+
+router.use(express.json());
+router.use(cors());
+
+// multer for files upload
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
 });
 
-const upload = multer({
-    storage: Storage
-}).single('postImage')
-router.post("/proposals",(req,res)=>{
-    upload(req,res,(err)=>{
-        if(err){
-            console.log(err);
-        }
-        else{
-            const VendersData = new VenderData({
-                eventName: req.body.eventName,
-                placeOfEvent: req.body.placeOfEvent,
-                proposalType: req.body.proposalType,
-                eventType: req.body.eventType,
-                budget: req.body.budget,
-                fromDate: req.body.fromDate,
-                toDate: req.body.toDate,
-                description: req.body.description,
-                foodPreferences: req.body.foodPreferences,
-                events: req.body.events,
-                fileName:{
-                    data: req.file.filename,
-                    contentType: 'image/png'
-                }
+const upload = multer({ storage: storage });
 
-            })
-            VendersData.save()
-            .then(()=>res.send("successfully uploaded"))
-            .catch((err)=>{console.log(err)})
-        }
-    })
-})
+// post
+router.post('/createProposals', upload.array('images',10), async (req, res) => {
+  try {
+    const { eventName, placeOfEvent, proposalType, eventType, budget, fromDate, toDate, description,foodPreferences,events  } = req.body;
+    const images = req.files.map(file => file.filename);
+    const VendersData = new VenderData({ eventName,images, placeOfEvent, proposalType, eventType, budget, fromDate, toDate, description,foodPreferences,events });
+    await VendersData.save();
+    res.status(201).send({ message: 'Data submitted successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ message: 'Internal server error occurs' });
+  }
+});
 
+// get
 router.get("/proposalsData",(req,res)=>{
 
     VenderData.find().then((data)=>{    
-            res.status(200).send({data})
+            res.status(201).send({data})
     }).catch((err)=>{
         res.status(400).send(err)
     })
