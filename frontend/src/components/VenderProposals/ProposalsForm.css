@@ -1,0 +1,177 @@
+
+.container{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+   
+}
+.body-container{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.main-container{
+    width:71.5em;
+    height: 46.875em;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid black;
+border-radius: 12px;
+opacity: 1;
+margin: auto;
+margin-top: 5em;
+}
+.header{
+    display: flex;
+justify-content: space-between;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+
+}
+.body-container{
+    width:120em;
+    height: 63.125em; 
+}
+.header> .into-symbol{
+    margin-right: 2em;
+    font-size: 1.5em;  
+}
+.header> button{
+    border: none;
+    background: none;
+}
+.header>.form-heading-text{
+font-size: 2em;
+margin: auto;
+text-align: center;
+letter-spacing: 0.78px;
+color: #393A3B;
+opacity: 1;
+}
+.form-container{
+    margin-top: 2em;
+}
+.form-inside-boxes{
+    display: flex;
+    justify-content: space-around;
+}
+.leftSide-container #eventName{
+width:28.75em;
+height: 2.5em;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #CCCCCC;
+border-radius: 4px;
+opacity: 1;
+padding-left: 1em;
+}
+.leftSide-container .eventName-text{
+    text-align: left;
+    font: normal normal normal 1.25em Open Sans;
+letter-spacing: 0.16px;
+color: #2D2D2E;
+opacity: 1;
+padding-bottom: 0.5em;
+}
+.side-by-side-inputs >section >select{
+    width: 12.3125em;
+    height: 2.5em;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #CCCCCC;
+border-radius: 4px;
+opacity: 1;
+}
+.label-text{
+text-align: left;
+font: normal normal normal 1.25em Open Sans;
+letter-spacing: 0.16px;
+color: #2D2D2E;
+opacity: 1;
+margin-top: 1em;
+padding-bottom: 0.5em;
+}
+#budget{
+    width: 12.3125em;
+    height: 2.5em;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #CCCCCC;
+border-radius: 4px;
+opacity: 1;
+}
+.side-by-side-inputs >section >input{
+    width: 12.3125em;
+    height: 2.5em;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #CCCCCC;
+border-radius: 4px;
+opacity: 1;
+}
+#description{
+    width:28.75em;
+    height: 9em;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    opacity: 1;
+    padding-left: 1em;
+}
+.file-container{
+    width:auto;
+    height:14em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.file-container .file-input-container::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .file-container .file-input-container::before {
+    content: 'Add';
+    color: #006BD9;
+    display: inline-block;
+    border: 1px solid #0078DD;
+    border-radius: 5px;
+    padding: 5px 8px;
+    outline: none;
+    cursor: pointer;
+    width: 3em;
+    text-align: center;
+    margin-left: 14em;
+}
+
+#foodPreferences{
+    width:28.75em;
+    height: 7em;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    opacity: 1;
+    padding-left: 1em;
+}
+#events{
+    width:28.75em;
+    height: 7em;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    opacity: 1;
+    padding-left: 1em;
+}
+.button-container button{
+    width: 8em;
+    height: 3.5em;
+    background: #4E94F4 0% 0% no-repeat padding-box;
+border-radius: 8px;
+font: normal normal bold 1em Open Sans;
+letter-spacing: 0.25em;
+color: #FFFFFF;
+text-transform: uppercase;
+opacity: 1;
+border-color: #4E94F4;
+
+}
+.button-container{
+    text-align: center;
+    margin-top: 1.5em;
+}
+button:hover{
+    cursor: pointer;
+}
