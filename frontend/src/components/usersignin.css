@@ -1,32 +1,40 @@
-#errMsg-1 {
+.box1 {
+  background-color: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+}
+
+.box1.expanded1 {
+  padding-left: 30px;
   position: absolute;
-  top: 110px;
+  top: 75px;
+  width: 370px;
+  height: 480px;
+  left: 25px;
+}
+
+
+#errMsg-12{
+  position: absolute;
+  top: 52px;
   color: red;
-  width: 300px;
-  font-size: 12px;
+  width:250px;
+  font-size:12px;
 }
 
-#errmessage {
+#errmessage11{
   position: absolute;
-  top: 110px;
+  top: 52px;
   color: green;
-  width: 300px;
-  font-size: 12px;
+  width:250px;
+  font-size:12px;
 }
-#vendor-name {
+
+#user-name {
   position: absolute;
-  top: 130px;
-  width: 325px;
-  height: 50px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #4e94f4;
-  border-radius: 4px;
-  opacity: 1;
-  padding-left: 15px;
-}
-#vendor-email {
-  position: absolute;
-  top: 195px;
+  top: 75px;
   width: 325px;
   height: 50px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -36,9 +44,9 @@
   padding-left: 15px;
 }
 
-#vendorContact {
+#user-email {
   position: absolute;
-  top: 258px;
+  top: 140px;
   width: 325px;
   height: 50px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -48,20 +56,9 @@
   padding-left: 15px;
 }
 
-#vendor-passowrd {
+#userContact {
   position: absolute;
-  top: 320px;
-  width: 325px;
-  height: 50px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #4e94f4;
-  border-radius: 4px;
-  opacity: 1;
-  padding-left: 15px;
-}
-#vendor-conPassword {
-  position: absolute;
-  top: 385px;
+  top: 204px;
   width: 325px;
   height: 50px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -71,9 +68,33 @@
   padding-left: 15px;
 }
 
-#signin-btn {
+#user-passowrd {
   position: absolute;
-  top: 480px;
+  top: 268px;
+  width: 325px;
+  height: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #4e94f4;
+  border-radius: 4px;
+  opacity: 1;
+  padding-left: 15px;
+}
+
+#user-conPassword {
+  position: absolute;
+  top: 332px;
+  width: 325px;
+  height: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #4e94f4;
+  border-radius: 4px;
+  opacity: 1;
+  padding-left: 15px;
+}
+
+#signin-btn2 {
+  position: absolute;
+  top: 430px;
   left: 39px;
   color: #4e94f4;
   font-size: 15px;
@@ -81,9 +102,9 @@
   cursor: pointer;
 }
 
-#vendor-btn2 {
+#user-btn2 {
   position: absolute;
-  top: 480px;
+  top: 410px;
   left: 285px;
   background-color: #4e94f4;
   color: white;

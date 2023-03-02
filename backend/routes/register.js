@@ -47,7 +47,7 @@ router.post('/register',async(req,res)=>{
     }catch(e){
         if(e.code==11000){
             return res.status(400).json({
-                status:"failed",
+                status:"fail",
                 message:"Contact already exists"
             })
         }

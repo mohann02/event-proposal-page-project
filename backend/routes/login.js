@@ -16,7 +16,7 @@ router.post('/login',async(req,res)=>{
         const vendor=await Vendor.findOne({contact:contact});
         if(!vendor){
             res.status(201).json({
-                status:"failed",
+                status:"201",
                 message:"Contact does not exits kindly register",
             });
         }else{
@@ -31,7 +31,7 @@ router.post('/login',async(req,res)=>{
                   });
             }else {
                 res.status(500).json({
-                  status: "failed",
+                  status: "fail",
                   message:
                     "Oops!! authentication failed, password is incorrect",
                 });
@@ -39,7 +39,7 @@ router.post('/login',async(req,res)=>{
         }
     }catch(e){
         res.status(404).json({
-            status: "failed",
+            status: "fail",
             message: "Kindly fill all the fields",
           });
     }

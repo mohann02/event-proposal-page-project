@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import UserSignIn from "./userSignIn";
 import "./vendorsign.css";
 import VendorSignUp from "./vendorSignUp";
 import axios from "axios";
 import { useNavigate,} from "react-router-dom";
+import UserSignIn from "./userSignIn";
 
 const VendorSignIn = () => {
   const [data, setData] = useState({});
@@ -12,7 +12,8 @@ const VendorSignIn = () => {
   const [msg,setErrormsg]=useState("");
   const [msg2,setMsg2]=useState("");
   const handleCreateAccount = () => {
-    setShowCreateAccountForm(true);
+      setShowCreateAccountForm(true);
+    
   };
   const handleSignUpSuccess = () => {
     setShowCreateAccountForm(false);
@@ -21,7 +22,7 @@ const VendorSignIn = () => {
     e.preventDefault();
 
     if (!data.contact || !data.password) {
-      setErrormsg("Kindly Fill all the details");
+      return alert("Kindly Fill all the details");
     }
     const config = {
       headers: {
@@ -30,28 +31,27 @@ const VendorSignIn = () => {
     };
     axios.post("http://localhost:8080/login", data, config).then((res) => {
       console.log(res.data);
-      if(res.data.message===201){
-        setErrormsg("Contact does not exists kindly register")
-        
-      }
       
-      // localStorage.setItem('token', res.data.jwt_token);
+      
+      localStorage.setItem('token', res.data.jwt_token);
 
       if (res.data.jwt_token !== undefined) {
         navigate("/board")
       }
-
+      if(res.data.status==='201'){
+        setErrormsg("Contact does not exists kindly register");
+      } 
 
     }).catch((e)=>{
-      if(e.response.data.status==="failed"){
+      if(e.response.data.status==="fail"){
         setMsg2("Password is incorrect");
       }
       
+       
     })
-
   }
   return (
-    <div id="div-main">
+    <div className="div-main">
       <h2 id="main-logo">LOGO</h2>
       <div id="container">
         <div id="sub-container-1">
@@ -104,7 +104,7 @@ const VendorSignIn = () => {
                         type="password"
                         placeholder="Password"
                         id="vendor-password"
-                        onChange={(e) => setData({ ...data, password: e.target.value })}
+                        onChange={(e) => setData({ ...data, password: e.target.value },setErrormsg(" "))}
                       />
                       <br />
                       <span id="error-msg-2">{msg2}</span>
@@ -119,7 +119,7 @@ const VendorSignIn = () => {
                   )}
                 </div>
                 <div class="tab-content">
-                  <UserSignIn />
+                    <UserSignIn/>
                 </div>
               </div>
             </div>
