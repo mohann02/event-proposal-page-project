@@ -1,27 +1,70 @@
-const express = require("express");
-const Vendor=require("../models/vendorLogin");
-const bodyParser = require("body-parser");
+const express = require('express');
+const multer = require('multer');
+const cors = require('cors');
 
-const router = express.Router();
+const router = express();
+const VenderData = require("../models/VendorModels");
+const VenderDetails = require("../models/vendorLogin");
+const userDetails=require("../models/userLogin");
 
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
+router.use(express.json());
+router.use(cors());
 
+// multer for files upload
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
 
-router.get("/vendor",async(req,res)=>{
-    try{
-        const vendor=await Vendor.find();
-        res.status(200).json({
-            status:"Done",
-            vendor
-        })
-    }catch(e){
-        res.status(500).json({
-            status:'Failed',
-            message:e.message,
-        })
-    }
+const upload = multer({ storage: storage });
+
+// post
+router.post('/createProposals', upload.array('images'), async (req, res) => {
+  try {
+    const { eventName, placeOfEvent, proposalType, eventType, budget, fromDate, toDate, description,foodPreferences,events  } = req.body;
+    const images = req.files.map(file => file.filename);
+    const VendersData = new VenderData({ eventName,images, placeOfEvent, proposalType, eventType, budget, fromDate, toDate, description,foodPreferences,events });
+    await VendersData.save();
+    res.status(201).send({ message: 'Data submitted successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ message: 'Internal server error occurs' });
+  }
+});
+
+// get
+router.get("/proposalsData",(req,res)=>{
+
+    VenderData.find().then((data)=>{    
+            res.status(201).send({data})
+    }).catch((err)=>{
+        res.status(400).send(err)
+    })
 })
-  
+
+
+//get vendor details
+router.get("/vendorDetails",(req,res)=>{
+
+    VenderDetails.find().then((data)=>{    
+            res.status(201).send({data})
+    }).catch((err)=>{
+        res.status(400).send(err)
+    })
+})
+
+//get user details
+router.get("/userDetails",(req,res)=>{
+
+    userDetails.find().then((data)=>{    
+            res.status(201).send({data})
+    }).catch((err)=>{
+        res.status(400).send(err)
+    })
+})
 
 module.exports = router;
