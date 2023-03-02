@@ -1,5 +1,5 @@
 const express=require("express");
-const Vendor=require("../models/vendorLogin");
+const User=require("../models/userLogin");
 const bodyParser=require("body-parser");
 const cors=require("cors");
 const router=express.Router();
@@ -8,7 +8,7 @@ router.use(bodyParser.urlencoded({extended:false}));
 
 router.use(bodyParser.json());
 router.use(cors());
-router.post('/register',async(req,res)=>{
+router.post('/userRegister',async(req,res)=>{
     try{
         const {name,email,contact,password,confirmPassword}=req.body;
         const salt=await bcrypt.genSalt(10);
@@ -17,14 +17,14 @@ router.post('/register',async(req,res)=>{
 
         if(name && email && contact && password && confirmPassword){
             if(password===confirmPassword){
-                const data=await Vendor.findOne({name:name,email:email,contact:contact,password:hashPassword,confirmPassword:confirmHashPassword});
+                const data=await User.findOne({name:name,email:email,contact:contact,password:hashPassword,confirmPassword:confirmHashPassword});
                 if(data!==null){
                     res.status(500).json({
                         status: "failed",
                         message: "This Contact already exists, kindly login",
                     })
                 }else{
-                        await Vendor.create({name,email,contact,password,confirmPassword});
+                        await User.create({name,email,contact,password,confirmPassword});
                         res.status(201).json({
                         status:"success",
                         message:"Registration done successfully",
