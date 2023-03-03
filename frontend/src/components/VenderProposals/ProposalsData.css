@@ -81,7 +81,7 @@ border: none;
 .header-search-box{
     display: flex;
     justify-content: space-between;
-    width:80%;
+    width:100%;
     height: 5em;
     margin-left: 1em;
     margin-bottom: 0;
@@ -98,7 +98,12 @@ color: #FFFFFF;
 text-transform: uppercase;
 opacity: 1;
 border-color: #4E94F4;
+
 }
+.create-button:-webkit-any-link {
+    text-decoration: none;
+    color: inherit;
+  }
 .proposals-search-container{
     display: flex;
     justify-content: center;
@@ -116,6 +121,7 @@ height: 1em;
 }
 .proposals-search-container h1{
     margin: auto;
+    font-size: 2em;
 }
 .proposals-search-container section{
     margin: auto;

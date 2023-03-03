@@ -17,6 +17,7 @@ const ProposalsForm = () => {
     const[foodPreferences, setFoodPreferences]= useState("");
     const[events, setEvents]= useState("");
     
+    const[error, setError] = useState("");
 
     const handleEventNameChange = (e)=>{
         setEventName(e.target.value)
@@ -55,7 +56,9 @@ const ProposalsForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        if(!eventName || !placeOfEvent || !proposalType || !eventType || !budget || !fromDate || !toDate || !description || !foodPreferences || !events || !postImage){
+            setError("Please Fill All The Details")
+        }
         const formData = new FormData();
         formData.append('eventName', eventName);
         formData.append('placeOfEvent', placeOfEvent);
@@ -73,7 +76,6 @@ const ProposalsForm = () => {
     
         try {
           await axios.post('http://localhost:8080/createProposals', formData);
-          alert('Form submitted successfully');
         } catch (err) {
           alert('Error submitting form');
           console.error(err);
@@ -89,9 +91,12 @@ const ProposalsForm = () => {
             <section className="main-container">
             <section className="header">
             <h1 className="form-heading-text">CreateProposal</h1>
-            <button className="into-symbol">X</button>
+            
+            <button className="into-symbol"><Link to="/proposals">X</Link></button>
+            
             </section>
             <form className="form-container">
+                <span style={{color:"red", marginLeft:"5em", fontWeight:"bold"}}>{error}</span>
                 <section className="form-inside-boxes">
                 <section className="leftSide-container">
                     <section className="eventName-text">
@@ -202,12 +207,11 @@ const ProposalsForm = () => {
                         name="events" value={events} placeholder="Events" required/>
                 </section>
                 </section>
+               
                 <section className="button-container">
-
-                    <button type="submit" onClick={handleSubmit}>
-                        <Link to="/proposals">Post</Link></button>
-
+                    <button type="submit" onClick={handleSubmit}> <Link to="/proposals">Post</Link></button>   
                 </section>
+                
             </form>
         </section>
             </section>

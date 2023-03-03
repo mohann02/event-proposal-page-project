@@ -39,13 +39,43 @@ router.post('/createProposals', upload.array('images'), async (req, res) => {
 // get
 router.get("/proposalsData",(req,res)=>{
 
-    VenderData.find().then((data)=>{    
+    VenderData.find().sort({createdAt:-1}).then((data)=>{    
             res.status(201).send({data})
     }).catch((err)=>{
         res.status(400).send(err)
     })
 })
 
+
+//delete
+router.delete("/proposalDelete/:id", async (req, res) => {
+  try {
+    const data = await VenderData.findByIdAndDelete(req.params.id);
+    res.json(data);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// edit 
+router.put("/editProposals/:id", async (req, res) => {
+  try {
+    const data = await VenderData.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.json(data);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+//delete
+
+// router.delete("/proposalDelete/:id", (req, res) => {
+//   VenderData.findByIdAndDelete(req.params.id)
+//     .then((data) => res.json(data))
+//     .catch((err) => console.log(err));
+// });
 
 //get vendor details
 router.get("/vendorDetails",(req,res)=>{
