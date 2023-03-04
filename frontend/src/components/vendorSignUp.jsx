@@ -37,6 +37,7 @@ const VendorSignUp = (props) => {
   }
 
   return (
+
     <div className="box1">
       <h4 id="SignUp-Heading">Register in your Account</h4>
       <span id="errMsg-1">{msg}</span>
@@ -63,6 +64,7 @@ const VendorSignUp = (props) => {
         <span onClick={handleSignUp} id="signin-btn">SignIn</span>
       </Link>
     </div>
+ 
   );
 };
 

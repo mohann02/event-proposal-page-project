@@ -7,7 +7,7 @@ const Header = ()=>{
         <section className="icons-container">
             <h1>LOGO</h1>
             <section className="vender-box">
-                <span>Vendor Name</span>
+                <span>User Name</span>
                 <span > <FaUserCircle/></span>
             </section>
         </section>

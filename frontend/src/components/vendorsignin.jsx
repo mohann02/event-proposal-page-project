@@ -51,6 +51,7 @@ const VendorSignIn = () => {
 
   }
   return (
+   <div className="main">
     <div id="div-main">
       <h2 id="main-logo">LOGO</h2>
       <div id="container">
@@ -127,6 +128,7 @@ const VendorSignIn = () => {
         </div>
       </div>
     </div>
+    </div> 
   );
 };
 

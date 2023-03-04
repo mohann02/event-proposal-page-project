@@ -1,8 +1,9 @@
-body {
+body .main  {
   background-image: url("../images/party-people-enjoy-concert-at-festival-summer-DHDMPWH.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
   font-family: "Open Sans", sans-serif;
+  height:100vh;
 }
 
 #main-logo{
@@ -16,6 +17,9 @@ body {
   position: relative;
 }
 
+#vendor-password-2{
+  border-color: 1px solid red;
+}
 #sub-container-1 {
   position: absolute;
   top: 200px;
@@ -130,15 +134,15 @@ body {
     border-radius: 3px;
     overflow: hidden;
     width: 400px;
-    height:400px;
+    height: 400px;
   }
   
   .box.expanded {
     position: absolute;
     top: -20px;
-    height: 548px; /* expanded height */
+    height: 548px; 
   }
-  
+
   .tab-list {
     margin: 0;
     padding: 0;
