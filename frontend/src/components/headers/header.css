@@ -1,0 +1,33 @@
+body{
+    width:100%;
+}
+.icons-container{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    height: 4.375em;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 3px 6px #00000029;
+border: 1px solid #FFFFFF;
+opacity: 1;
+
+    
+}
+.vender-box{
+    margin-top: auto;
+    align-items: center;
+    margin-right: 5em;
+    display: flex;
+    column-gap: 2em;
+}
+
+.icons-container h1{
+    margin-left: 2em;
+    font: normal normal bold 2em Open Sans;
+letter-spacing: 1.28px;
+color: #64A1F5;
+opacity: 1;
+margin-right: auto;
+margin-top: auto;
+margin-bottom: auto;
+}
