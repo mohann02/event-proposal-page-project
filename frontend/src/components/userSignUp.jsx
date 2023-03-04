@@ -19,7 +19,7 @@ const UserSignUp = (props) => {
       setErrormsg("Kindly Fill all the details");
     }
     if(data.password!==data.confirmPassword){
-      setErrormsg("Password and Confirm Passowrd no match");
+      setErrormsg("Password and Confirm Password no match");
     }
     const config = {
       headers: {
@@ -29,12 +29,12 @@ const UserSignUp = (props) => {
     axios.post("http://localhost:8080/userRegister", data, config).then((res) => {
       setData({});
     setErrormsg1("Registration Done Go and SignIn");
+    if(res.data.status==="failed"){
+      setErrormsg("Contact already exists please go and signin");
+    }
     })
     .catch((e)=>{
       console.log(e.response.data.status);
-        if(e.response.data.status==="failed"){
-          setErrormsg("Contact already exists please go and signin");
-        }
     })
 
   }

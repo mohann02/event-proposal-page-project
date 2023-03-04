@@ -3,6 +3,7 @@ const Vendor=require("../models/vendorLogin");
 const bodyParser=require("body-parser");
 const jwt=require('jsonwebtoken');
 const bcrypt = require("bcrypt");
+const JWT_SECRET_KEY = "fdnbgkd656d5g6dfgmnbdfjfg";
 const router=express.Router();
 
 router.use(bodyParser.urlencoded({extended:false}));
@@ -21,12 +22,13 @@ router.post('/login',async(req,res)=>{
             });
         }else{
             const isPasswordMatching=await bcrypt.compare(password,vendor.password);
-            const token=jwt.sign({exp:Math.floor(Date.now()/1000)+(6000000*60),vendor:vendor._id},'secret');
+            const token=jwt.sign({exp:Math.floor(Date.now()/1000)+(6000000*60),vendor:vendor._id},JWT_SECRET_KEY);
             if(isPasswordMatching){
                 res.status(200).json({
                     status: "success",
                     message:
                       "Welcome!! authentication successful, you are logged in successfully",
+                      vendor,
                     jwt_token: token,
                   });
             }else {

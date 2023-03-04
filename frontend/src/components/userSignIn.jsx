@@ -3,14 +3,28 @@ import "./usersignin.css";
 import UserSignUp from "./userSignUp";
 import { useNavigate,} from "react-router-dom";
 import axios from "axios";
-
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const UserSignIn = () => {
+  const [type, setType] = useState("password");
+  const [hide, setHide] = useState({ display: "none" });
+  const [show, setShow] = useState({ display: "block" });
   const [showCreateAccountForm, setShowCreateAccountForm] = useState(false);
   const navigate = useNavigate()
   const [data, setData] = useState({});
   const [msg,setErrormsg]=useState("");
   const [msg2,setMsg2]=useState("");
+  function handleview(action) {
+    if (action === "show") {
+      setType("text");
+      setHide({ display: "block" });
+      setShow({ display: "none" });
+    } else {
+      setType("password");
+      setShow({ display: "block" });
+      setHide({ display: "none" });
+    }
+  }
   const handleCreateAccount = () => {
     setShowCreateAccountForm(true);
   };
@@ -29,13 +43,11 @@ const UserSignIn = () => {
       },
     };
     axios.post("http://localhost:8080/userLogin", data, config).then((res) => {
-      console.log(res.data);
-      
       
       localStorage.setItem('token', res.data.jwt_token);
 
       if (res.data.jwt_token !== undefined) {
-        navigate("/board")
+        navigate("/home")
       }
       if(res.data.status==="failed"){
         setErrormsg("Contact does not exists kindly register");
@@ -65,11 +77,23 @@ const UserSignIn = () => {
                       />
                       <br />
                       <input
-                        type="password"
+                         type={type}
                         placeholder="Password"
                         id="vendor-password"
                         onChange={(e) => setData({ ...data, password: e.target.value },setErrormsg(""))}
                       />
+                      <span className="icon-span">
+                        <AiFillEyeInvisible
+                          style={hide}
+                          className="eye"
+                          onClick={() => handleview("hide")}
+                        />
+                        <AiFillEye
+                          className="eye"
+                          style={show}
+                          onClick={() => handleview("show")}
+                        />
+                      </span>
                       <br />
                       <span id="error-msg-2">{msg2}</span>
                       <span id="forget-password">Forget Password?</span>

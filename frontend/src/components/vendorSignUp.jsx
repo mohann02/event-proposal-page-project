@@ -14,7 +14,7 @@ const VendorSignUp = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!data.contact || !data.name || !data.email || !data.password) {
+    if (!data.contact || !data.vendorName || !data.email || !data.password) {
       setErrormsg("Kindly Fill all the details");
     }
     if(data.password!==data.confirmPassword){
@@ -45,8 +45,8 @@ const VendorSignUp = (props) => {
       <span id="errmessage">{msg1}</span>
       <form id="form">
         <input type="text" placeholder="Name" id="vendor-name"
-        value={data.name || ""}
-        onChange={(e) => setData({ ...data, name: e.target.value },setErrormsg(""))}
+        value={data.vendorName || ""}
+        onChange={(e) => setData({ ...data, vendorName: e.target.value },setErrormsg(""))}
         /><br/>
         <input type="email" placeholder="Email" id="vendor-email"
         value={data.email || ""}

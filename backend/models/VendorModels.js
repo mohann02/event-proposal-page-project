@@ -45,5 +45,7 @@ const VenderSchema = new Schema({
         type: String,
         required: true
     }
+},{
+    timestamps:true
 })
 module.exports = mongoose.model("VenderProposals",VenderSchema )
