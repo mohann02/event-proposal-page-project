@@ -43,7 +43,7 @@ const VenderSchema = new Schema({
     }, 
     events:{
         type: String,
-         required: true
+        required: true
     }
 },{
     timestamps:true
