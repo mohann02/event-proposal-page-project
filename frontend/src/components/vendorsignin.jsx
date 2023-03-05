@@ -123,7 +123,7 @@ const VendorSignIn = () => {
                         onChange={(e) =>
                           setData(
                             { ...data, password: e.target.value },
-                            setErrormsg(" ")
+                            setErrormsg("")
                           )
                         }
                       />

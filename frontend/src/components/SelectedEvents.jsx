@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect,useState } from "react";
 import {
   MDBCol,
   MDBRow,
@@ -9,6 +9,7 @@ import event1 from "./eventImages/event1.jpg";
 import event2 from "./eventImages/event2.jpg";
 import event3 from "./eventImages/event3.jpg";
 import event4 from "./eventImages/event4.jpg";
+import axios from "axios";
 // import Products from "./Events";
 
 export const truncate = (str,n)=>{
@@ -18,7 +19,12 @@ export const truncate = (str,n)=>{
 const ProductsInCart = () => {
   const { basket, setBasket,count,setCount} = useContext(ProductContext);
   const arr=[event1,event2,event3,event4];
+  const [vendorName,setVendorName]=useState([]);
 
+  useEffect(()=>{
+    axios.get("http://localhost:8080/vendorDetails").then((res) => {
+      setVendorName(res.data.data[res.data.data.length-1])})
+  })
   // const navigate=useNavigate();
   // let aggregate=basket.reduce((prevVal,currVal)=>{
   //   return prevVal+currVal?.gamePrice
@@ -65,6 +71,7 @@ const ProductsInCart = () => {
                         style={{borderRadius:"4px"}}
                       />
                     </div>
+                    <div style={{paddingLeft:"10px"}}>{vendorName.vendorName}</div>
                     <div style={{paddingTop:"15px",paddingLeft:"10px"}}>{_?.budget}/-</div>
                     <div style={{paddingLeft:"10px"}}>{_?.placeOfEvent}</div>
                     <button style={{ cursor: "pointer", background:"white",border:"0px solid black",marginLeft:"240px" }} onClick={()=>removeFromCart(index)}>X</button>

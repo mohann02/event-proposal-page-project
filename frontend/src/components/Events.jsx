@@ -28,7 +28,7 @@ const Products = ({ items }) => {
       navigate("/");
     }else{
       axios.get("http://localhost:8080/vendorDetails").then((res) => {
-      setVendorName(res.data.data[0]);
+      setVendorName(res.data.data[res.data.data.length-1]);
     });
     }
     
@@ -64,7 +64,7 @@ const Products = ({ items }) => {
                     <div>
                      <Link to={`/product/${x?._id}`}>
                      <img
-                        src={arr[Math.floor(Math.random() * 2)]}
+                        src={arr[Math.floor(Math.random() * 9)]}
                         alt="abcd"
                         height={200}
                         width={267}

@@ -47,7 +47,7 @@ const UserSignUp = (props) => {
       <form id="form">
         <input type="text" placeholder="Name" id="user-name"
         value={data.name || ""}
-        onChange={(e) => setData({ ...data, name: e.target.value },setErrormsg(""))}
+        onChange={(e) => setData({ ...data, name: e.target.value },setErrormsg(""),setErrormsg1(""))}
         /><br/>
         <input type="email" placeholder="Email" id="user-email"
         value={data.email || ""}
@@ -59,7 +59,7 @@ const UserSignUp = (props) => {
         /><br/>
         <input type="password" placeholder="Password" id="user-passowrd"
         value={data.password || ""}
-        onChange={(e) => setData({ ...data, password: e.target.value })}
+        onChange={(e) => setData({ ...data, password: e.target.value },setErrormsg(""))}
         /><br/>
         <input type="password" placeholder="Confirm Password" id="user-conPassword"
         value={data.confirmPassword || ""}

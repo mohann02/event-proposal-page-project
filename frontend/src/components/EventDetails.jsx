@@ -21,6 +21,7 @@ const ProductDetails = () => {
     setBasket([...basket, product]);
   };
 
+  console.log(eventImages);
   useEffect(() => {
     axios.get("http://localhost:8080/vendorDetails").then((res) => {
       setVendorName(res.data.data[0]);
@@ -157,7 +158,10 @@ const ProductDetails = () => {
                 </div>
               )
             })} */}
-            <img src={arr[2]} alt="eventImage" style={{margin:"10px"}} height={100} width={100}/>
+            <div>
+            <img src={arr[Math.floor(Math.random() * 2)]} alt="eventImage" style={{margin:"10px"}} height={100} width={100}/>
+            <img src={arr[Math.floor(Math.random() * 4)]} alt="eventImage" style={{margin:"10px"}} height={100} width={100}/>
+            </div>
           </div>
           </div>
           <div

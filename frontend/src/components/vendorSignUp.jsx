@@ -46,7 +46,7 @@ const VendorSignUp = (props) => {
       <form id="form">
         <input type="text" placeholder="Name" id="vendor-name"
         value={data.vendorName || ""}
-        onChange={(e) => setData({ ...data, vendorName: e.target.value },setErrormsg(""))}
+        onChange={(e) => setData({ ...data, vendorName: e.target.value },setErrormsg(""),setErrormsg1(""))}
         /><br/>
         <input type="email" placeholder="Email" id="vendor-email"
         value={data.email || ""}
@@ -58,7 +58,7 @@ const VendorSignUp = (props) => {
         /><br/>
         <input type="password" placeholder="Password" id="vendor-passowrd"
         value={data.password || ""}
-        onChange={(e) => setData({ ...data, password: e.target.value })}
+        onChange={(e) => setData({ ...data, password: e.target.value },setErrormsg(""))}
         /><br/>
         <input type="password" placeholder="Confirm Password" id="vendor-conPassword"
         value={data.confirmPassword || ""}
